@@ -32,7 +32,7 @@
 
 <?php require_once("./inc/head.php"); ?>
 <?php require_once("./inc/header.php"); ?>
-    <h3 class="text-center mt-5">Seja Bem Vindx!</h3>
+    <h3 class="text-center mt-3">Seja Bem Vindx!</h3>
     <main class="container">
         <article class="row">
             <section class="col-12 mx-auto bg-light my-5 py-5 rounded border" id="cadastroform">
@@ -86,6 +86,4 @@
 
         </article>
     </main>
-
-
 <?php require_once("./inc/footer.php"); ?>   
