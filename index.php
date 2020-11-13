@@ -2,15 +2,15 @@
     require_once("./config/conexao.php");
 
     if(isset($_POST) && $_POST){
-        $nome = $_POST["inputNome"];
-        $sobrenome = $_POST["inputSobrenome"];
-        $telefone = $_POST["inputTelefone"];
-        $dataDeNascimento = $_POST["inputNascimento"];
-        $cep = $_POST["inputCep"];
-        $endereco = $_POST["inputEndereco"];
-        $bairro = $_POST["inputBairro"];
-        $referencia = $_POST["inputReferencia"];
-        $email = $_POST["inputEmail"];
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"];
+        $telefone = $_POST["telefone"];
+        $dataDeNascimento = $_POST["dataDeNascimento"];
+        $cep = $_POST["cep"];
+        $endereco = $_POST["endereco"];
+        $bairro = $_POST["bairro"];
+        $referencia = $_POST["referencia"];
+        $email = $_POST["email"];
 
         $query = $dbh->prepare('insert into clientes (nome, sobrenome, telefone, dataDeNascimento, cep, endereco, bairro, referencia, email) values (:nome, :sobrenome, :telefone, :dataDeNascimento, :cep, :endereco, :bairro, :referencia, :email)');
 
@@ -76,9 +76,17 @@
                                 <input type="text" class="form-control" id="email" name="email" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary" id="btnCadastro">Cadastrar</button>
                         <div class="form-group">
-
+                            <?php
+                                    if(isset($_POST) && $_POST){
+                                        if($cadastro){
+                                            echo '<div class="col-md-6 mt-2 alert alert-success">cliente cadastrado com sucesso</div>';
+                                    } else {
+                                            echo '<div class="col-md-6 mt-2 alert alert-danger">Falha ao processar requisição</div>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </form>
 

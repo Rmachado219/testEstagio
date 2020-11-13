@@ -12,21 +12,19 @@
     }
 
     if(isset($_POST) && $_POST){
-
-        $id = $_POST["id"];
         $nome = $_POST["nome"];
         $sobrenome = $_POST["sobrenome"];
         $telefone = $_POST["telefone"];
-        $dataDeNascimento = $_POST["Nascimento"];
-        $cep = $_POST["Cep"];
-        $endereco = $_POST["Endereco"];
-        $bairro = $_POST["Bairro"];
-        $referencia = $_POST["Referencia"];
-        $email = $_POST["Email"];
+        $dataDeNascimento = $_POST["dataDeNascimento"];
+        $cep = $_POST["cep"];
+        $endereco = $_POST["endereco"];
+        $bairro = $_POST["bairro"];
+        $referencia = $_POST["referencia"];
+        $email = $_POST["email"];
     
-      $query = $dbh->prepare("update clientes set nome = :nome, sobrenome = :sobrenome, telefone = :telefone, dataDeNascimento = :dataDeNascimento, cep = :cep, endereco = :endereco, bairro = :bairro, referencia = :referencia,email = :email");
+      $query = $dbh->prepare("update clientes set nome = :nome, sobrenome = :sobrenome, telefone = :telefone, dataDeNascimento = :dataDeNascimento, cep = :cep, endereco = :endereco, bairro = :bairro, referencia = :referencia, email = :email");
 
-        $alterou = $query->execute([
+        $editar = $query->execute([
             ":nome" => $nome,
             "sobrenome" => $sobrenome,
             ":telefone" => $telefone,
@@ -89,7 +87,15 @@
                         </div>
                         <button type="submit" class="btn btn-danger" id="btnEditar">Editar</button>
                         <div class="form-group">
-
+                            <?php
+                                if(isset($_POST) && $_POST){
+                                    if($editar){
+                                        echo '<div class="col-md-6 mt-2 alert alert-success">Usuário alterado com sucesso</div>';
+                                    } else {
+                                        echo '<div class="col-md-6 mt-2 alert alert-danger">Falha ao processar requisição</div>';
+                                    }
+                                }
+                        ?>
                         </div>
                     </form>
 
