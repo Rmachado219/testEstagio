@@ -2,7 +2,7 @@
 
 require_once("./config/conexao.php");
 
-if (isset($_GET) && $_GET) {
+if (isset($_GET) && $_GET){
     $query = $dbh->prepare('delete from clientes where id = :id');
     $excluir = $query->execute([
         ":id" => $_GET["id"]
@@ -30,22 +30,22 @@ $arrayClientes = $query->fetchAll(PDO::FETCH_ASSOC);
                 </thead>
                 <tbody>
 
-                    <?php foreach ($arrayClientes as $clientes) : ?>
+                    <?php foreach ($arrayClientes as $cliente) : ?>
                         <tr>
-                            <th scope="row"><?= $clientes["nome"] ?></th>
-                            <td><?= $clientes["sobrenome"] ?></td>
-                            <td><?= $clientes["email"] ?></td>
+                            <th scope="row"><?= $cliente["nome"] ?></th>
+                            <td><?= $cliente["sobrenome"] ?></td>
+                            <td><?= $cliente["email"] ?></td>
                             <td>
-                                <a href="edit.php?id=<?= $clientes["id"] ?>">
+                                <a href="edit.php?id=<?= $cliente["id"] ?>">
                                     <i class="fas fa-pen"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#modal<?= $clientes["id"] ?>">
+                                <a href="#" data-toggle="modal" data-target="#modal<?= $cliente["id"] ?>">
                                     <i class="fas fa-trash"></i>
                                 </a>
 
-                                <div class="modal fade" id="modal<?= $clientes["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="modal<?= $cliente["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -55,12 +55,12 @@ $arrayClientes = $query->fetchAll(PDO::FETCH_ASSOC);
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Usuário: <?= $clientes["nome"] ?></p>
+                                                <p>Clientes: <?= $cliente["nome"] ?></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                <a href="clientes.php?id=<?= $clientes["id"] ?>">
-                                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                                <a href="clientes.php?id=<?= $cliente["id"] ?>">
+                                                    <button type="button" class="btn btn-danger">Excluir</button>
                                                 </a>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@ $arrayClientes = $query->fetchAll(PDO::FETCH_ASSOC);
         <div class="col-md-12">
             <?php
             if (isset($_GET) && $_GET) {
-                if ($excluir) {
+                if ($excluir){
                     echo '<div class="col-md-12 alert-success">Usuário exclúido com sucesso</div>';
                 } else {
                     echo '<div class="col-md-12 alert-danger">Falha ao processar requisição</div>';

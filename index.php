@@ -34,6 +34,8 @@
 <?php require_once("./inc/header.php"); ?>
     <h3 class="text-center mt-3">Seja Bem Vindx!</h3>
     <main class="container">
+        <a href="edit.php">Editar</a>
+        <a href="delete.php">Deletar</a>
         <article class="row">
             <section class="col-12 mx-auto bg-light my-5 py-5 rounded border" id="cadastroform">
                 <h3 class="col-12 text-center my-3">Cadastro de Cliente</h3>
